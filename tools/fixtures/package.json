@@ -1,0 +1,20 @@
+{
+  "name": "fixtures",
+  "version": "1.0.0",
+  "description": "",
+  "main": "fixtures.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "csv-parse": "^2.0.0",
+    "kuzzle-sdk": "^5.0.10",
+    "uuid": "^3.2.1",
+    "random-int": "^1.0.0",
+    "random-words": "^1.0.0",
+    "random-float": "^1.0.0"
+  }
+}

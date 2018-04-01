@@ -1,0 +1,23 @@
+{
+  "name": "Travailoo",
+  "version": "1.0.0",
+  "description": "Backend plugin to cache the points",
+  "author": "Baptiste Leulliette",
+  "main": "./index.js",
+  "pluginInfo": {
+    "defaultConfig": {}
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tyki/plugin_travailoo.git"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tyki/plugin_travailoo/issues"
+  },
+  "homepage": "https://github.com/Tyki/plugin_travailoo#readme"
+}
