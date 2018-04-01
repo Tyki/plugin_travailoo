@@ -1,5 +1,8 @@
 'use strict'
 
+const geoRepository = require('../core/repositories/geoRepository')
+const geoHelper = require('../core/helpers/geoHelper')
+
 function cacheController () {
   /**
    * Warmup the cache with all the points
@@ -7,9 +10,25 @@ function cacheController () {
    * @param {KuzzleRequest} request 
    */
   this.warmupCache = () => {
-    console.log('[Travailoo] Starting to warmup the cache')
+    console.log('[Warmup] Starting to warmup the cache')
 
-    console.log('[Travailoo] Done warming up the cache')
+    const topLeftFrance = {
+      lat: 51.209922,
+      lon: -5.983665
+    }
+    
+    const bottomRightFrance = {
+      lat: 41.110475,
+      lon: 10.309282
+    }
+
+    let geoHashes = geoHelper.getGeoHashGridFromViewport(topLeftFrance, bottomRightFrance, 4)
+    let start = new Date().getTime()
+    return geoRepository.searchBySquares(geoHashes, null)
+    .then(() => {
+      let duration = new Date().getTime() - start
+      console.log(`[Warmup][${duration}ms] Done warming-up all geohashes for France`)
+    })
   }
 
   /**
@@ -19,6 +38,8 @@ function cacheController () {
   this.updateCache = () => {
     return Promise.resolve()
   }
+
+  return this
 }
 
 module.exports = new cacheController()

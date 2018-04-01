@@ -22,6 +22,8 @@ class TravailooPlugin {
   init (customConfig, context) {
     this.config = Object.assign(this.config, customConfig)
 
+    pluginContext.set(context)
+
     cacheController.warmupCache()
   }
 }

@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/Tyki/plugin_travailoo/issues"
   },
-  "homepage": "https://github.com/Tyki/plugin_travailoo#readme"
+  "homepage": "https://github.com/Tyki/plugin_travailoo#readme",
+  "dependencies": {
+    "latlon-geohash": "^1.1.0"
+  }
 }
