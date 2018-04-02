@@ -17,6 +17,7 @@ class TravailooPlugin {
     this.updateCache = cacheController.updateCache
 
     this.getPoints = geoController.getPoints
+    this.getPointsES = geoController.getPointsES
   }
   
   init (customConfig, context) {

@@ -1,6 +1,7 @@
 module.exports = {
   Geo: {
-    getPoints: 'getPoints'
+    getPoints: 'getPoints',
+    getPointsES: 'getPointsES'
   },
   Cache: {
     warmupCache: 'warmupCache',

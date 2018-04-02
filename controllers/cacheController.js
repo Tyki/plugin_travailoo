@@ -1,6 +1,6 @@
 'use strict'
 
-const geoRepository = require('../core/repositories/geoRepository')
+const cacheRepository = require('../core/repositories/cacheRepository')
 const geoHelper = require('../core/helpers/geoHelper')
 
 function cacheController () {
@@ -24,7 +24,7 @@ function cacheController () {
 
     let geoHashes = geoHelper.getGeoHashGridFromViewport(topLeftFrance, bottomRightFrance, 4)
     let start = new Date().getTime()
-    return geoRepository.searchBySquares(geoHashes, null)
+    return cacheRepository.warmupGeoHashes(geoHashes, null)
     .then(() => {
       let duration = new Date().getTime() - start
       console.log(`[Warmup][${duration}ms] Done warming-up all geohashes for France`)
