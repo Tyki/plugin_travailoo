@@ -199,11 +199,9 @@ function insertData () {
   kuzzle.loginPromise('local', {username: 'admin', password: 'admin'}, '1h')
     .then(() => kuzzle.queryPromise({index: 'labels'}, {controller: 'index', action: 'delete'}))
     .catch(error => {
-      console.error(error)
     })
     .then(() => kuzzle.queryPromise({index: 'offers'}, {controller: 'index', action: 'delete'}))
     .catch(error => {
-      console.error(error)
     })
     .then(() => kuzzle.createIndexPromise('offers'))
     .then(() => kuzzle.collection('data', 'offers').createPromise())
@@ -213,7 +211,6 @@ function insertData () {
     .then(() => kuzzle.collection('midCategories', 'labels').createPromise())
     .then(() => kuzzle.collection('subCategories', 'labels').createPromise())
     .then(() => kuzzle.collection('jobs', 'labels').createPromise())
-    .then(() => kuzzle.collection('jobs', 'labels').collectionMapping({'lowerCasedName': {type: 'keyword'}}).applyPromise())
     .then(() => kuzzle.queryPromise({controller: 'bulk', action: 'import'}, {body: {bulkData: data}}))
     .then(() => createOffersFixtures())
     .then(() => createOffersFixtures())

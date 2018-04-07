@@ -68,7 +68,7 @@ function geoRepository () {
         }
       },
       from: 0,
-      size: 1000,
+      size: 9999,
       scroll: '5s'
     })
 
@@ -76,9 +76,19 @@ function geoRepository () {
     return (pluginContext.get()).accessors.execute(request)
     .then(response => {      
       if (response.result.total !== 0) {
+        console.log(`[${geoHash}] count : ${response.result.total}`)
         response.result.hits.forEach(hit => {
           accumulator.push(hit)
         })
+
+        if (response.result.total === accumulator.length) {
+          console.log(`[${geoHash}] Done searching`)
+          return {
+            geoHash,
+            accumulator
+          }  
+        } 
+
         return this.scrollSearchAGeoHash(response.result._scroll_id, geoHash, accumulator)
       } else {
         console.log(`[${geoHash}] Done searching`)

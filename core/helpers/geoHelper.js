@@ -6,7 +6,7 @@ function geoHelper () {
    * @param {Object} topLeft 
    * @param {Object} bottomRight 
    */
-  this.getGeoHashGridFromViewport = (topLeft, bottomRight) => {
+  this.getGeoHashGridFromViewport = (topLeft, bottomRight, precision) => {
     const topRight = {
       lat: topLeft.lat,
       lon: bottomRight.lon
@@ -18,8 +18,6 @@ function geoHelper () {
     }
 
     let geoHashes = []
-    // Force the precision to 4
-    let precision = 4
 
     let topLeftGeoHash = GeoHashConverter.encode(topLeft.lat, topLeft.lon, precision)
     let topRightGeoHash = GeoHashConverter.encode(topRight.lat, topRight.lon, precision)
