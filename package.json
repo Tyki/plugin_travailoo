@@ -8,7 +8,8 @@
     "defaultConfig": {}
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "fixtures": "node bootstrap.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,15 @@
   },
   "homepage": "https://github.com/Tyki/plugin_travailoo#readme",
   "dependencies": {
+    "dotenv": "^5.0.1",
     "latlon-geohash": "^1.1.0"
+  },
+  "devDependencies": {
+    "csv-parse": "^2.0.0",
+    "kuzzle-sdk": "^5.0.10",
+    "uuid": "^3.2.1",
+    "random-int": "^1.0.0",
+    "random-words": "^1.0.0",
+    "random-float": "^1.0.0"
   }
 }

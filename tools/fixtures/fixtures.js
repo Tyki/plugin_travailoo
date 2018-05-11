@@ -7,8 +7,8 @@ const uuidv4 = require('uuid/v4')
 const randomFloat = require('random-float')
 const randomInt = require('random-int')
 
-Kuzzle.prototype.bluebird = bluebird
-let kuzzle = new Kuzzle('127.0.0.1')
+const host = process.env.KUZZLE_HOST || 'api.travailoo.fr'
+let kuzzle = new Kuzzle(host)
 
 let output = []
 
@@ -106,7 +106,7 @@ function createFixtures () {
       insertData()
     })
 
-    fs.readFile('jobs.csv', {flags: 'r'}, (error, data) => {
+    fs.readFile('tools/fixtures/jobs.csv', {flags: 'r'}, (error, data) => {
       if (error) console.error(error)
       parser.write(data.toString())
       parser.end()
@@ -231,4 +231,4 @@ function insertData () {
     })
 }
 
-createFixtures()
+module.exports = createFixtures
