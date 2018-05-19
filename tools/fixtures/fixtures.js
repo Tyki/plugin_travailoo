@@ -180,15 +180,15 @@ function createOffersFixtures () {
 
     offers.push({
       create: {
+        _id: uuidv4(),
         _index: 'offers',
-        _type: 'data',
-        _id: uuidv4()
+        _type: 'data'
       }
     })
     offers.push(document)
   }
 
-  return kuzzle.queryPromise({controller: 'bulk', action: 'import'}, {body: {bulkData: offers}})
+  return kuzzle.queryPromise({controller: 'bulk', action: 'import', index: 'offers', collection: 'data'}, {body: {bulkData: offers}})
 }
 
 function getRandomInt (max) {
@@ -212,6 +212,10 @@ function insertData () {
     .then(() => kuzzle.collection('subCategories', 'labels').createPromise())
     .then(() => kuzzle.collection('jobs', 'labels').createPromise())
     .then(() => kuzzle.queryPromise({controller: 'bulk', action: 'import'}, {body: {bulkData: data}}))
+    .catch(error => {
+      console.error(error)
+      process.exit(1)
+    })
     .then(() => createOffersFixtures())
     .then(() => createOffersFixtures())
     .then(() => createOffersFixtures())
@@ -223,7 +227,7 @@ function insertData () {
     .then(() => createOffersFixtures())
     .then(() => createOffersFixtures())
     .then(response => {
-      // console.log('done !')
+      console.log('done !')
       process.exit(0)
     }).catch(error => {
       console.error(error)
