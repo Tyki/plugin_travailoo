@@ -16,10 +16,10 @@ services:
       - kuzzle_services__memoryStorage__node__host=redis
       - NODE_ENV=production
     volumes:
-      - /home/$USER/travailoo/backend/docker-entrypoint.sh:/var/app/docker-compose/scripts/docker-entrypoint.sh  
-      - /home/$USER/travailoo/backend:/var/app/plugins/enabled/travailoo
-      - /home/$USER/travailoo/backend/pm2.json:/config/pm2.json
-      - /home/$USER/travailoo/backend/.kuzzlerc:/var/app/.kuzzlerc
+      - /home/$USER/workspace/travailoo/backend/docker-entrypoint.sh:/var/app/docker-compose/scripts/docker-entrypoint.sh  
+      - /home/$USER/workspace/travailoo/backend:/var/app/plugins/enabled/travailoo
+      - /home/$USER/workspace/travailoo/backend/pm2.json:/config/pm2.json
+      - /home/$USER/workspace/travailoo/backend/.kuzzlerc:/var/app/.kuzzlerc
 
   redis:
     image: redis:3.2
